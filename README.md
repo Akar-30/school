@@ -20,7 +20,7 @@ While I'm happy to share my work, please note that this repository is primarily 
 
 **License:**
 
-[Insert your desired license here, e.g., MIT, Apache]
+MIT
 
 **Contact:**
 
