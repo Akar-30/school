@@ -24,6 +24,6 @@ MIT
 
 **Contact:**
 
-If you have any questions or would like to connect, please feel free to contact me via [your email address].
+If you have any questions or would like to connect, please feel free to contact me via akar511.30@gmail.com.
 
 **Thank you for visiting!**
