@@ -5,28 +5,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework 2 Form</title>
+    <style>
+        h1 {
+            text-align: right;
+        }
+
+        form {
+            direction: rtl;
+        }
+    </style>
 </head>
 
 <body>
-    <form action="/submit" method="post">
+    <h1 style="text-align: right;">فۆرمی داواکاری کار</h1>
+    <form action="#" method="post">
         <fieldset>
-            <legend>Personal Information</legend>
+            <legend>زانیاری کەسی</legend>
 
-            <label for="fullName">Full Name:</label>
-            <input type="text" id="fullName" name="fullName" required><br><br>
+            <label for="fullName">ناوی تەواو: </label>
+            <input type="text" id="fullName" name="fullName" placeholder="ئاکار حسن" required><br><br>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
+            <label for="email">ئیمەیڵ: </label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required><br><br>
 
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" required><br><br>
+            <label for="phone">ژمارەی تەلەفۆن</label>
+            <input type="tel" id="phone" name="phone" placeholder="07501112233" required><br><br>
 
-            <label for="birthdate">Birthdate:</label>
+            <label for="birthdate">ڕۆژی لەدایکبوون: </label>
             <input type="date" id="birthdate" name="birthdate" required><br><br>
         </fieldset>
 
-        <input type="submit" value="Submit">
+        <fieldset>
+            <legend>تواناو بەهرەکانت</legend>
+
+            <label for="skillLevel">تواناکانت دیاری بکە (ئەتوانی زیاد لە دانەیەک دیاری بکەیت)</label>
+            <br>
+            <select id="skillLevel" name="skillLevel" required multiple>
+                <option value="beginner">پەرەپێدانی وێب</option>
+                <option value="intermediate">پەرەپێدانی مۆبایل</option>
+                <option value="advanced">دیزاین</option>
+                <option value="advanced">پەرەپێدانی دیسکتۆپ</option>
+                <option value="advanced">IT Support</option>
+            </select><br><br>
+
+            <label>زمانەکانی کۆد کە دەزانیت: </label><br>
+            <input type="checkbox" id="language1" name="languages" value="JavaScript">
+            <label for="language1">جاڤاسکریپت</label><br>
+            <input type="checkbox" id="language2" name="languages" value="Python">
+            <label for="language2">پایسۆن</label><br>
+            <input type="checkbox" id="language3" name="languages" value="Java">
+            <label for="language3">جاڤا</label><br>
+            <input type="checkbox" id="language4" name="languages" value="C++">
+            <label for="language4">دارت</label><br><br>
+
+            <label for="colorCode">رەنگی کۆدەکانت دیاری بکە: </label>
+            <input type="color" id="colorCode" name="colorCode" required><br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>زیادکردنی فایل</legend>
+
+            <label for="resume">فایلەکەت لێرە ئەپلۆد بکە</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required><br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>زانیاری زیاتر</legend>
+
+            <label for="bio">زانیاری زیاتر بنووسە: </label><br>
+            <textarea id="bio" name="bio" rows="4" cols="50" placeholder="زانیاری زیاتر بنوسە"></textarea><br><br>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>پێشکەشکردنی داواکاری</legend>
+
+            <input type="checkbox" id="agree" name="agree" required>
+            <label for="agree">ڕازیم بە مەرجەکان</label><br><br>
+
+            <input type="submit" value="پێشکەشکردنی داواکاری">
+            <input type="reset" value="سڕینەوەی زانیاریەکان">
+
+        </fieldset>
+
     </form>
+
 
 </body>
 
