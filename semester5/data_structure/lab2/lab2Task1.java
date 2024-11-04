@@ -1,4 +1,6 @@
-public class Main {
+package semester5.data_structure.lab2;
+
+public class lab2Task1 {
     public static void main(String[] args) {
 
         // Array first TASK

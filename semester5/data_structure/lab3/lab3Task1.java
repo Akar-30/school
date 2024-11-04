@@ -10,7 +10,7 @@ import java.util.Arrays;
 /**
  * task1
  */
-public class task1 {
+public class lab3Task1 {
     private static int getTotalElements(int[][][] arr) {
         int totalElements = 0;
         for (int i = 0; i < arr.length; i++) {
