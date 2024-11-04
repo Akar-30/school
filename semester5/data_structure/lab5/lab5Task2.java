@@ -25,7 +25,7 @@ public class lab5Task2 {
         };
 
         // Converting 3d array to 1d array
-        int[] arr1D = new int[27];
+        int[] arr1D = new int[arr3D.length * arr3D[0].length * arr3D[0][0].length];
         for (int i = 0; i < arr3D.length; i++) {
             for (int j = 0; j < arr3D[0].length; j++) {
                 for (int k = 0; k < arr3D[0][0].length; k++) {
