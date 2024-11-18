@@ -71,7 +71,7 @@ public class lab3Task1 {
         // T I U S
         // 2 0 2 5
 
-        char[][][] arr2 = { { { 'T', 'I', 'U', 'S' }, { '2', '0', '2', '5' } } };
+        char[][][] arr2 = { { { 'T', 'I' }, { 'U', 'S' } }, { { '2', '0' }, { '2', '5' } } };
 
         // 5. Find total number of elements of arr1 and arr2. Output:
         // Total elements of arr1:
