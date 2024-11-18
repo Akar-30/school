@@ -53,7 +53,7 @@ public class lab6Task1 {
         }
         System.out.println();
         descendingSelectionSort(arr1);
-        System.out.println("After sorting:");
+        System.out.println("After sorting desc:");
         for (int i : arr1) {
             System.out.print(i + " ");
         }
