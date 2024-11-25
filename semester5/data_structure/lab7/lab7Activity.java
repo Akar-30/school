@@ -3,7 +3,15 @@ package semester5.data_structure.lab7;
 import java.util.Scanner;
 
 /*
- * sort a 2d array by using insertion sort algorithm
+ * GROUP 5:
+ * CREW MEMBERS:
+ * 1. AKAR HASSAN
+ * 2. SANA LATIF
+ * 3. MUHAMMAD JALAL
+ * 4. MUSLIM MAHMOOD
+ * 
+ * 
+ * PROBLEM: Sort a 2D array by using insertion sort algorithm. 
  */
 
 public class lab7Activity {
