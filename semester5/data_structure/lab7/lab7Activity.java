@@ -11,7 +11,7 @@ import java.util.Scanner;
  * 4. MUSLIM MAHMOOD
  * 
  * 
- * PROBLEM: Sort a 2D array by using insertion sort algorithm. 
+ * PROBLEM: Sort a 2D array by using insertion sort algorithm --Ascending. 
  */
 
 public class lab7Activity {
@@ -65,6 +65,8 @@ public class lab7Activity {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+
+        // GETTING ARRAY FROM USER
         System.out.print("Enter the number of rows: ");
         int n = input.nextInt();
         System.out.print("Enter the number of columns: ");
@@ -75,10 +77,11 @@ public class lab7Activity {
             for (int j = 0; j < m; j++) {
                 System.out.print("array at index " + i + " " + j + " is : ");
                 arr2d[i][j] = input.next().charAt(0);
-                // System.out.println("array at index " + i + " " + j + " is : " + arr2d[i][j]);
                 System.out.println();
             }
         }
+
+        // PROCESSING THE ARRAY
         System.out.println("The array before sorting: ");
         print2dArray(arr2d);
         char[] arr1d = towDTo1d(arr2d);
