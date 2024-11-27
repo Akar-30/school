@@ -1,0 +1,98 @@
+<!-- Responsive Flexbox Layout -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 10px;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .left-section {
+            background-color: #f1f1f1;
+            width: 30%;
+            padding: 10px;
+            flex: 1;
+        }
+
+        .content {
+            background-color: #f1f1f1;
+            width: 30%;
+            padding: 10px;
+            flex: 3;
+        }
+
+        .right-section {
+            background-color: #f1f1f1;
+            width: 30%;
+            padding: 10px;
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                flex-direction: column;
+            }
+
+            .left-section,
+            .right-section {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <title>
+        Responsive Flexbox Layout
+    </title>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="left-section">
+            <h1>Left Section</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+        <div class="content">
+            <h1>Content</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+        <div class="right-section">
+            <h1>Right Section</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+    </main>
+
+</body>
+
+</html>
