@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZZZZIEEEE</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background-color: rgb(12, 89, 234);
+            margin: 0;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            padding-bottom: 40px;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: white;
+            padding: 0 10px;
+        }
+
+        main {
+            display: grid;
+            grid-template-areas:
+                'aside section'
+                'footer footer';
+            background-color: rgb(190, 214, 235);
+        }
+
+        aside {
+            grid-area: aside;
+            max-width: 250px;
+            background-color: white;
+            margin: 20px 0px 0 20px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        section {
+            grid-area: section;
+        }
+
+        section h2 {
+            margin-left: 20px;
+        }
+
+        article {
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 20px 0;
+
+        }
+
+        article h2 {
+            padding: 0;
+            margin: 0;
+        }
+
+        footer {
+            background-color: rgb(12, 89, 234);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            grid-area: footer;
+            justify-items: center;
+            text-align: center;
+            align-items: center;
+
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Tishk International University</h1>
+        <br>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="news.html">Computer Engineering & IT</a> |
+            <a href="about.html">Addmissions</a> |
+            <a href="about.html">About</a> |
+            <a href="about.html">Services</a>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <h2>Related Information</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem suscipit quidem soluta assumenda
+                distinctio quasi nostrum, vel nam atque exercitationem, consequuntur ea voluptate illum, nulla sed
+                voluptatum cupiditate enim! Consequuntur.</p>
+        </aside>
+        <section>
+            <h2>
+                Computer Engineering & IT at Tishk International University
+            </h2>
+            <article>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores inventore voluptas labore! Ipsum
+                    quisquam eaque delectus distinctio hic rerum neque. Nulla laudantium nemo a ipsum aliquam laborum
+                    eligendi et earum?</p>
+            </article>
+            <article>
+                <h2>Why choose Computer Engineering and IT Department</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores inventore voluptas labore! Ipsum
+                    quisquam eaque delectus distinctio hic rerum neque. Nulla laudantium nemo a ipsum aliquam laborum
+                    eligendi et earum?</p>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>
+            &copy; 2024 TIU All Rights reserved
+        </p>
+    </footer>
+</body>
+
+</html>
