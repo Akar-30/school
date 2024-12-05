@@ -48,12 +48,15 @@ def print_processes(processes):
     for process in processes:
         print(f"{process.pid}\t\t{process.priority}\t\t{process.arrival_time}\t\t{process.burst_time}\t\t{process.completion_time}\t\t{process.turnaround_time}\t\t{process.waiting_time}")
 
-# Example usage
+# Example usage with provided processes
 processes = [
-    Process(1, 2, 0, 3),
-    Process(2, 1, 1, 4),
-    Process(3, 3, 2, 2),
-    Process(4, 2, 3, 1)
+    Process(1, 2, 0, 1),
+    Process(2, 6, 1, 7),
+    Process(3, 3, 2, 3),
+    Process(4, 5, 3, 6),
+    Process(5, 4, 4, 5),
+    Process(6, 10, 5, 15),
+    Process(7, 9, 15, 8)
 ]
 
 scheduled_processes = preemptive_priority_scheduling(processes)
