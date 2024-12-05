@@ -1,6 +1,6 @@
 from queue import PriorityQueue
 
-class Process2:
+class Process:
     def __init__(self, pid, priority, arrival_time, burst_time):
         self.pid = pid
         self.priority = priority
@@ -16,7 +16,6 @@ def preemptive_priority_scheduling(processes):
     pq = PriorityQueue()
     n = len(processes)
     completed = 0
-    processes.sort(key=lambda x: x.arrival_time)
     current_index = 0
 
     while completed < n:
@@ -26,6 +25,7 @@ def preemptive_priority_scheduling(processes):
 
         if not pq.empty():
             current_process = pq.get()[2]
+            print(f"Time {time}: Processing {current_process.pid}")
             time += 1
             current_process.remaining_time -= 1
 
@@ -34,7 +34,11 @@ def preemptive_priority_scheduling(processes):
                 current_process.turnaround_time = current_process.completion_time - current_process.arrival_time
                 current_process.waiting_time = current_process.turnaround_time - current_process.burst_time
                 completed += 1
+                print(f"Process {current_process.pid} completed at time {time}")
         else:
+            if current_index >= n:
+                break  # Break the loop if no more processes to add and queue is empty
+            print(f"Time {time}: No process in queue, incrementing time")
             time += 1
 
     return processes
@@ -44,17 +48,13 @@ def print_processes(processes):
     for process in processes:
         print(f"{process.pid}\t\t{process.priority}\t\t{process.arrival_time}\t\t{process.burst_time}\t\t{process.completion_time}\t\t{process.turnaround_time}\t\t{process.waiting_time}")
 
-if __name__ == "__main__":
-    # List of processes with given values
-    processes = [
-        Process2(1, 2, 0, 1),
-        Process2(2, 6, 1, 7),
-        Process2(3, 3, 2, 3),
-        Process2(4, 5, 3, 6),
-        Process2(5, 4, 4, 5),
-        Process2(6, 10, 5, 15),
-        Process2(7, 9, 15, 8)
-    ]
+# Example usage
+processes = [
+    Process(1, 2, 0, 3),
+    Process(2, 1, 1, 4),
+    Process(3, 3, 2, 2),
+    Process(4, 2, 3, 1)
+]
 
-    processes = preemptive_priority_scheduling(processes)
-    print_processes(processes)
+scheduled_processes = preemptive_priority_scheduling(processes)
+print_processes(scheduled_processes)
