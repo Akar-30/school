@@ -1,4 +1,4 @@
-class Process1:
+class Process:
     def __init__(self, pid, priority, arrival_time, burst_time):
         self.pid = pid
         self.priority = priority
@@ -19,7 +19,7 @@ def calculate_times(processes):
         process.completion_time = time + process.burst_time
         process.turnaround_time = process.completion_time - process.arrival_time
         process.waiting_time = process.turnaround_time - process.burst_time
-        process.response_time = process.waiting_time
+        process.response_time = process.waiting_time +process.arrival_time
         time += process.burst_time
 
     return processes
@@ -32,13 +32,13 @@ def print_processes(processes):
 if __name__ == "__main__":
     # List of processes with given values
     processes = [
-        Process1(1, 2, 0, 3),
-        Process1(2, 6, 2, 5),
-        Process1(3, 3, 1, 4),
-        Process1(4, 5, 4, 2),
-        Process1(5, 7, 6, 9),
-        Process1(6, 4, 5, 4),
-        Process1(7, 10, 7, 10)
+        Process(1, 2, 0, 3),
+        Process(2, 6, 2, 5),
+        Process(3, 3, 1, 4),
+        Process(4, 5, 4, 2),
+        Process(5, 7, 6, 9),
+        Process(6, 4, 5, 4),
+        Process(7, 10, 7, 10)
     ]
 
     processes.sort(key=lambda x: (x.priority, x.arrival_time))
