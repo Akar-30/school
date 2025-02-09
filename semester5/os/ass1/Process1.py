@@ -19,7 +19,7 @@ def calculate_times(processes):
         process.completion_time = time + process.burst_time
         process.turnaround_time = process.completion_time - process.arrival_time
         process.waiting_time = process.turnaround_time - process.burst_time
-        process.response_time = process.waiting_time +process.arrival_time
+        process.response_time = time - process.arrival_time
         time += process.burst_time
 
     return processes
@@ -37,7 +37,7 @@ if __name__ == "__main__":
         Process(3, 3, 1, 4),
         Process(4, 5, 4, 2),
         Process(5, 7, 6, 9),
-        Process(6, 4, 5, 4),
+        Process(6, 1, 5, 4),
         Process(7, 10, 7, 10)
     ]
 
