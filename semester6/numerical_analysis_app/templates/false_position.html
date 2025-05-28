@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="method-section">
+    <h2>False Position (Regula Falsi) Method</h2>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="function">Function (in terms of x):</label>
+            <input type="text" id="function" name="function" required placeholder="e.g., x**3 - x - 2">
+        </div>
+
+        <div class="form-group">
+            <label for="a">Lower bound (a):</label>
+            <input type="number" id="a" name="a" required step="any" placeholder="e.g., 1">
+        </div>
+
+        <div class="form-group">
+            <label for="b">Upper bound (b):</label>
+            <input type="number" id="b" name="b" required step="any" placeholder="e.g., 2">
+        </div>
+
+        <div class="form-group">
+            <label for="tolerance">Tolerance:</label>
+            <input type="number" id="tolerance" name="tolerance" required step="any" min="0" value="0.0001">
+        </div>
+
+        <div class="form-group">
+            <label for="max_iter">Maximum iterations:</label>
+            <input type="number" id="max_iter" name="max_iter" required min="1" value="20">
+        </div>
+
+        <button type="submit">Find Root</button>
+    </form>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if show_result %}
+    <div class="result-section">
+        <h3>Result</h3>
+        <p>Approximate root: <strong>{{ root }}</strong></p>
+
+        <h4>Iteration Details</h4>
+        <table>
+            <tr>
+                <th>Iteration</th>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>f(a)</th>
+                <th>f(b)</th>
+                <th>f(c)</th>
+                <th>|b-a|</th>
+            </tr>
+            {% for iter in iterations %}
+            <tr>
+                <td>{{ iter.iteration }}</td>
+                <td>{{ iter.a }}</td>
+                <td>{{ iter.b }}</td>
+                <td>{{ iter.c }}</td>
+                <td>{{ iter['f(a)'] }}</td>
+                <td>{{ iter['f(b)'] }}</td>
+                <td>{{ iter['f(c)'] }}</td>
+                <td>{{ iter['abs_diff'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+    <div class="algorithm">
+        <h3>False Position Method Algorithm</h3>
+        <ol>
+            <li>Start with interval [a, b] where f(a) and f(b) have opposite signs</li>
+            <li>Compute c using the false position formula: c = (a*f(b) - b*f(a))/(f(b) - f(a))</li>
+            <li>Calculate f(c)</li>
+            <li>If f(c) = 0 or |f(c)| < tolerance, c is the root</li>
+            <li>Else if f(a)*f(c) < 0, set b=c</li>
+            <li>Else set a = c</li>
+            <li>Repeat until convergence or maximum iterations reached</li>
+        </ol>
+
+        <h4>MATLAB Implementation</h4>
+        <div class="code-example">
+            <pre>
+function [root, iterations] = false_position(f, a, b, tol, max_iter)
+    % FALSE_POSITION Finds a root of f(x) = 0 using false position method
+    % Inputs:
+    %   f - function handle
+    %   a, b - initial interval [a, b]
+    %   tol - tolerance
+    %   max_iter - maximum number of iterations
+    % Outputs:
+    %   root - approximate root
+    %   iterations - array of iteration information
+    
+    if f(a)*f(b) >= 0
+        error('Function must have opposite signs at endpoints');
+    end
+    
+    iterations = [];
+    for i = 1:max_iter
+        fa = f(a);
+        fb = f(b);
+        c = (a*fb - b*fa)/(fb - fa);
+        fc = f(c);
+        err = abs(b - a);
+        
+        iterations = [iterations; [i, a, b, c, fa, fb, fc, err]];
+        
+        if abs(fc) < tol
+            break;
+        end
+        
+        if fa*fc < 0
+            b = c;
+        else
+            a = c;
+        end
+    end
+    root = c;
+end</pre>
+        </div>
+    </div>
+</section>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .code-example {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+        margin: 1rem 0;
+    }
+
+    pre {
+        margin: 0;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .algorithm ol {
+        line-height: 1.6;
+    }
+</style>
+{% endblock %}

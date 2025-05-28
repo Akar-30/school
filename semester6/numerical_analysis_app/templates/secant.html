@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="method-section">
+    <h2>Secant Method</h2>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="function">Function (in terms of x):</label>
+            <input type="text" id="function" name="function" required placeholder="e.g., x**2 - 4">
+        </div>
+
+        <div class="form-group">
+            <label for="x0">First initial guess (x0):</label>
+            <input type="number" id="x0" name="x0" required step="any" placeholder="e.g., 1">
+        </div>
+
+        <div class="form-group">
+            <label for="x1">Second initial guess (x1):</label>
+            <input type="number" id="x1" name="x1" required step="any" placeholder="e.g., 3">
+        </div>
+
+        <div class="form-group">
+            <label for="tolerance">Tolerance:</label>
+            <input type="number" id="tolerance" name="tolerance" required step="any" min="0" value="0.0001">
+        </div>
+
+        <div class="form-group">
+            <label for="max_iter">Maximum iterations:</label>
+            <input type="number" id="max_iter" name="max_iter" required min="1" value="20">
+        </div>
+
+        <button type="submit">Find Root</button>
+    </form>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if show_result %}
+    <div class="result-section">
+        <h3>Result</h3>
+        <p>Approximate root: <strong>{{ root }}</strong></p>
+
+        <h4>Iteration Details</h4>
+        <table>
+            <tr>
+                <th>n</th>
+                <th>Pn</th>
+                <th>Pn+1</th>
+                <th>Pn+2</th>
+                <th>|Pn+1-Pn|</th>
+                <th>f(Pn)</th>
+            </tr>
+            {% for iter in iterations %}
+            <tr>
+                <td>{{ iter.iteration-1 }}</td>
+                <td>{{ iter.x0 }}</td>
+                <td>{{ iter.x1 }}</td>
+                <td>{{ iter.x2 }}</td>
+                <td>{{ (iter.x1 - iter.x0)|abs }}</td>
+                <td>{{ iter['f(x0)'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+    <div class="algorithm">
+        <h3>Secant Method Algorithm</h3>
+        <ol>
+            <li>Start with two initial approximations x0 and x1</li>
+            <li>Compute x2 = x1 - f(x1)*(x1 - x0)/(f(x1) - f(x0))</li>
+            <li>Set x0 = x1 and x1 = x2</li>
+            <li>Repeat until |f(x1)| &lt; tolerance or maximum iterations reached</li>
+        </ol>
+    </div>
+</section>
+{% endblock %}

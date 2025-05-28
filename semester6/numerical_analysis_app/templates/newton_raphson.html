@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="method-section">
+    <h2>Newton-Raphson Method</h2>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="function">Function (in terms of x):</label>
+            <input type="text" id="function" name="function" required placeholder="e.g., x**2 - 4">
+        </div>
+
+        <div class="form-group">
+            <label for="derivative">Derivative of function:</label>
+            <input type="text" id="derivative" name="derivative" required placeholder="e.g., 2*x">
+        </div>
+
+        <div class="form-group">
+            <label for="x0">Initial guess (P0):</label>
+            <input type="text" id="x0" name="x0" required step="any" placeholder="e.g., 3">
+        </div>
+
+        <div class="form-group">
+            <label for="tolerance">Tolerance:</label>
+            <input type="number" id="tolerance" name="tolerance" required step="any" min="0" value="0.0001">
+        </div>
+
+        <div class="form-group">
+            <label for="max_iter">Maximum iterations:</label>
+            <input type="number" id="max_iter" name="max_iter" required min="1" value="20">
+        </div>
+
+        <button type="submit">Find Root</button>
+    </form>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if show_result %}
+    <div class="result-section">
+        <h3>Result</h3>
+        <p>Approximate root: <strong>{{ root }}</strong></p>
+
+        <h4>Iteration Details</h4>
+        <table>
+            <tr>
+                <th>n</th>
+                <th>Pn</th>
+                <th>f(x)</th>
+                <th>f'(x)</th>
+                <th>|Pn-Pn-1|</th>
+            </tr>
+            {% for iter in iterations %}
+            <tr>
+                <td>{{ iter.iteration-1 }}</td>
+                <td>{{ iter.x }}</td>
+                <td>{{ iter['f(x)'] }}</td>
+                <td>{{ iter["f'(x)"] }}</td>
+                <td>{{ (iter.x_next - iter.x)|abs }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+    <div class="algorithm">
+        <h3>Newton-Raphson Algorithm</h3>
+        <ol>
+            <li>Start with an initial guess x0</li>
+            <li>Compute x1 = x0 - f(x0)/f'(x0)</li>
+            <li>Set x0 = x1</li>
+            <li>Repeat until |f(x0)| &lt; tolerance or maximum iterations reached</li>
+        </ol>
+    </div>
+</section>
+{% endblock %}

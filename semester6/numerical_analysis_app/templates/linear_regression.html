@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="method-section">
+    <h2>Linear Regression (y = ax + b)</h2>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="x_values">X values (comma separated):</label>
+            <input type="text" id="x_values" name="x_values" required
+                value="{% if show_result %}{{ ','.join(x_values|map('string')) }}{% endif %}"
+                placeholder="e.g., 1,2,3,4,5">
+        </div>
+
+        <div class="form-group">
+            <label for="y_values">Y values (comma separated):</label>
+            <input type="text" id="y_values" name="y_values" required
+                value="{% if show_result %}{{ ','.join(y_values|map('string')) }}{% endif %}"
+                placeholder="e.g., 1.2,1.9,3.2,4.1,5.0">
+        </div>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if show_result %}
+    <div class="result-section">
+        <h3>Result</h3>
+        <p>Linear regression equation: <strong>y = {{ slope }}x + {{ intercept }}</strong></p>
+
+        <h4>Parameters:</h4>
+        <ul>
+            <li>Slope (a): {{ slope }}</li>
+            <li>Intercept (b): {{ intercept }}</li>
+        </ul>
+
+        <div id="chart-container" style="width: 100%; height: 400px;"></div>
+
+        <h4>MATLAB Code</h4>
+        <div class="code-example">
+            <pre>
+% Linear regression
+x = [{{ x_values|join(',') }}];
+y = [{{ y_values|join(',') }}];
+A = [x; ones(size(x))]';
+params = A \ y';
+slope = params(1);
+intercept = params(2);</pre>
+        </div>
+    </div>
+    {% endif %}
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        {% if show_result %}
+        // Plot the data and fitted curve
+        const xValues = {{ x_values| tojson
+    }};
+    const yValues = {{ y_values| tojson }};
+    const xFit = {{ x_fit| tojson }};
+    const yFit = {{ y_fit| tojson }};
+
+    const trace1 = {
+        x: xValues,
+        y: yValues,
+        mode: 'markers',
+        type: 'scatter',
+        name: 'Data Points',
+        marker: { size: 10 }
+    };
+
+    const trace2 = {
+        x: xFit,
+        y: yFit,
+        mode: 'lines',
+        type: 'scatter',
+        name: 'Fitted Line',
+        line: { color: 'red', width: 2 }
+    };
+
+    const layout = {
+        title: 'Linear Regression Fit',
+        xaxis: { title: 'X values' },
+        yaxis: { title: 'Y values' },
+        showlegend: true
+    };
+
+    Plotly.newPlot('chart-container', [trace1, trace2], layout);
+    {% endif %}
+    });
+</script>
+{% endblock %}

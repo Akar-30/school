@@ -1,0 +1,268 @@
+ body {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     line-height: 1.6;
+     margin: 0;
+     padding: 0;
+     color: #333;
+     background-color: #f5f5f5;
+ }
+
+ header {
+     background: #2c3e50;
+     color: white;
+     padding: 1rem 0;
+     text-align: center;
+ }
+
+ nav ul {
+     list-style: none;
+     padding: 0;
+     display: flex;
+     justify-content: center;
+     background: #34495e;
+     margin: 0;
+ }
+
+ nav ul li {
+     margin: 0 1rem;
+ }
+
+ nav ul li a {
+     color: white;
+     text-decoration: none;
+     padding: 0.5rem 1rem;
+     display: block;
+ }
+
+ nav ul li a:hover {
+     background: #1abc9c;
+ }
+
+ main {
+     padding: 2rem;
+     max-width: 1200px;
+     margin: 0 auto;
+ }
+
+ footer {
+     text-align: center;
+     padding: 1rem;
+     background: #2c3e50;
+     color: white;
+ }
+
+ /* Form styles */
+ .form-group {
+     margin-bottom: 1rem;
+ }
+
+ label {
+     display: block;
+     margin-bottom: 0.5rem;
+     font-weight: bold;
+ }
+
+ input[type="text"],
+ input[type="number"],
+ select {
+     width: 100%;
+     padding: 0.5rem;
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     font-size: 1rem;
+ }
+
+ button {
+     background: #1abc9c;
+     color: white;
+     border: none;
+     padding: 0.7rem 1.5rem;
+     border-radius: 4px;
+     cursor: pointer;
+     font-size: 1rem;
+ }
+
+ button:hover {
+     background: #16a085;
+ }
+
+ /* Result styles */
+ .result-section {
+     margin-top: 2rem;
+     background: white;
+     padding: 1.5rem;
+     border-radius: 4px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ }
+
+ .error {
+     color: #e74c3c;
+     background: #fadbd8;
+     padding: 1rem;
+     border-radius: 4px;
+     margin: 1rem 0;
+ }
+
+ /* Table styles */
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     margin: 1rem 0;
+ }
+
+ th,
+ td {
+     border: 1px solid #ddd;
+     padding: 0.5rem;
+     text-align: center;
+ }
+
+ th {
+     background: #f2f2f2;
+ }
+
+ /* Method cards */
+ .methods {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+     gap: 1.5rem;
+     margin: 2rem 0;
+ }
+
+ .method-card {
+     background: white;
+     padding: 1.5rem;
+     border-radius: 4px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ }
+
+ .method-card h3 {
+     margin-top: 0;
+     color: #2c3e50;
+ }
+
+ .method-card a {
+     display: inline-block;
+     margin-top: 1rem;
+     color: #1abc9c;
+     text-decoration: none;
+     font-weight: bold;
+ }
+
+ .method-card a:hover {
+     text-decoration: underline;
+ }
+
+ /* Code examples */
+ .code-example {
+     background: #2d2d2d;
+     color: #f8f8f2;
+     padding: 1rem;
+     border-radius: 4px;
+     overflow-x: auto;
+     margin: 1rem 0;
+ }
+
+ pre {
+     margin: 0;
+     font-family: 'Courier New', Courier, monospace;
+     line-height: 1.4;
+ }
+
+ .algorithm {
+     background: #e8f4fc;
+     padding: 1.5rem;
+     border-radius: 4px;
+     margin-top: 2rem;
+ }
+
+ .algorithm ol {
+     padding-left: 1.5rem;
+ }
+
+ /* Existing styles... */
+
+ /* Navigation Styles */
+ .navbar {
+     display: flex;
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     background: #34495e;
+ }
+
+ .navbar li {
+     position: relative;
+ }
+
+ .navbar li a {
+     display: block;
+     color: white;
+     text-decoration: none;
+     padding: 1rem 1.5rem;
+     transition: background 0.3s;
+ }
+
+ .navbar li a:hover {
+     background: #1abc9c;
+ }
+
+ /* Dropdown Styles */
+ .dropdown-menu {
+     display: none;
+     position: absolute;
+     top: 100%;
+     left: 0;
+     background: #2c3e50;
+     min-width: 200px;
+     padding: 0;
+     margin: 0;
+     list-style: none;
+     z-index: 1000;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+ }
+
+ .dropdown:hover .dropdown-menu {
+     display: block;
+ }
+
+ .dropdown-menu li {
+     border-bottom: 1px solid #34495e;
+ }
+
+ .dropdown-menu li:last-child {
+     border-bottom: none;
+ }
+
+ .dropdown-menu li a {
+     padding: 0.8rem 1.5rem;
+     white-space: nowrap;
+ }
+
+ .dropdown-menu li a:hover {
+     background: #16a085;
+ }
+
+ /* Dropdown arrow */
+ .dropdown>a::after {
+     content: " ▽";
+     font-size: 0.8em;
+ }
+
+ /* Mobile responsiveness */
+ @media (max-width: 768px) {
+     .navbar {
+         flex-direction: column;
+     }
+
+     .dropdown-menu {
+         position: static;
+         box-shadow: none;
+     }
+
+     .dropdown:hover .dropdown-menu {
+         display: none;
+     }
+
+     /* Add mobile menu toggle functionality in script.js */
+ }
