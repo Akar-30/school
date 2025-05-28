@@ -4,3 +4,7 @@ To get started, you need to install both Flask and NumPy. Run the following comm
 pip install flask
 pip install numpy
 ```
+Then run the project
+```bash
+python app.py
+```
