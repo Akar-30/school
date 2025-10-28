@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 int ledPin[] = {7, 8, 9, 10};
-const int buzzerPin = 6;
+const int buzzerPin = 11;
 
 const int trigPin = 3;
 const int echoPin = 4;
@@ -22,7 +22,7 @@ void setup()
 
 void loop()
 {
-    // قراءة المسافة
+
     digitalWrite(trigPin, LOW);
     delayMicroseconds(2);
     digitalWrite(trigPin, HIGH);
@@ -32,61 +32,45 @@ void loop()
     duration = pulseIn(echoPin, HIGH);
     distance = duration * 0.034 / 2;
 
-    int ledsToLight = 0;
-
     if (distance <= 40 && distance > 30)
     {
-        ledsToLight = 1;
+        digitalWrite(ledPin[2], HIGH);
+        digitalWrite(ledPin[3], HIGH);
+        digitalWrite(ledPin[0], LOW);
+        digitalWrite(ledPin[1], LOW);
+        digitalWrite(buzzerPin, HIGH);
+        delay(600);
+        digitalWrite(buzzerPin, LOW);
     }
     else if (distance <= 30 && distance > 20)
     {
-        ledsToLight = 2;
+        digitalWrite(ledPin[2], HIGH);
+        digitalWrite(ledPin[3], HIGH);
+        digitalWrite(ledPin[0], LOW);
+        digitalWrite(ledPin[1], LOW);
+        digitalWrite(buzzerPin, HIGH);
+        delay(400);
+        digitalWrite(buzzerPin, LOW);
     }
     else if (distance <= 20 && distance > 10)
     {
-        ledsToLight = 3;
+        digitalWrite(ledPin[0], HIGH);
+        digitalWrite(ledPin[1], HIGH);
+        digitalWrite(ledPin[2], LOW);
+        digitalWrite(ledPin[3], LOW);
+        digitalWrite(buzzerPin, HIGH);
+        delay(250);
+        digitalWrite(buzzerPin, LOW);
     }
     else if (distance <= 10)
     {
-        ledsToLight = 4;
-    }
-    else
-    {
-        ledsToLight = 0;
-    }
-
-    // تشغيل الليدات حسب المسافة
-    for (int i = 0; i < 4; i++)
-    {
-        if (i < ledsToLight)
-        {
-            digitalWrite(ledPin[i], HIGH);
-        }
-        else
-        {
-            digitalWrite(ledPin[i], LOW);
-        }
-    }
-
-    // التحكم في البزر:
-    // مدة الصوت ثابتة 100ms
-    // مدة الصمت تقل كلما زادت الليدات
-    if (ledsToLight > 0)
-    {
+        digitalWrite(ledPin[0], HIGH);
+        digitalWrite(ledPin[1], HIGH);
+        digitalWrite(ledPin[2], LOW);
+        digitalWrite(ledPin[3], LOW);
         digitalWrite(buzzerPin, HIGH);
         delay(100);
         digitalWrite(buzzerPin, LOW);
-
-        int silenceDelay = 400 - (ledsToLight * 80); // تقل من 320ms إلى 80ms تقريبًا
-
-        if (silenceDelay < 80)
-            silenceDelay = 80; // حد أدنى للصمت
-
-        delay(silenceDelay);
     }
-    else
-    {
-        digitalWrite(buzzerPin, LOW);
-        delay(100);
-    }
+    delay(200);
 }
